@@ -61,11 +61,9 @@ class EHRcontract extends Contract {
      * Issue EMR
      *
      * @param {Context} ctx the transaction context
-     * @param {String} issuer commercial paper issuer
-     * @param {Integer} paperNumber paper number for this issuer
-     * @param {String} issueDateTime paper issue date
-     * @param {String} maturityDateTime paper maturity date
-     * @param {Integer} faceValue face value of paper
+     * @param {String} dono do EMR (Paciente)
+     * @param {String} Informações de acesso ao EMR 
+     * @param {String} Hash do EMR
     */
 
     async issue(ctx, owner, accessInfo, hash) {
@@ -74,7 +72,7 @@ class EHRcontract extends Contract {
             // Cria a instancia do EHR
             let ehr = EHR.createInstance(owner, accessInfo, hash); // Cria uma instância da classe EHR
 
-            // Armazena a org emissora do EHR
+            // Armazena a org emissora do EMR
             ehr.setOrg(ctx.clientIdentity.getMSPID());
             
             ehr.setStatus('Pendent');
