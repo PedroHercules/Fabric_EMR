@@ -90,6 +90,22 @@ class QueryUtils {
         let queryResults = await method(this.ctx, self, JSON.stringify(queryString));
         return queryResults;
     }
+    
+    async queryKeyByOrg(org) {
+        //  
+        let self = this;
+        if (arguments.length < 1) {
+            throw new Error('Incorrect number of arguments. Expecting owner name.');
+        }
+        let queryString = {};
+        queryString.selector = {};
+        //  queryString.selector.docType = 'indexOwnerDoc';
+        queryString.selector.org = org;
+        // set to (eg)  '{selector:{owner:MagnetoCorp}}'
+        let method = self.getQueryResultForQueryString;
+        let queryResults = await method(this.ctx, self, JSON.stringify(queryString));
+        return queryResults;
+    }
 
     // ===== Example: Ad hoc rich query ========================================================
     // queryAdhoc uses a query string to perform a query for marbles..
