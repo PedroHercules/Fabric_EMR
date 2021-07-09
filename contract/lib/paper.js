@@ -38,10 +38,6 @@ class EHR extends State {
         return this.org;
     }
 
-    getIssuer() {
-        return this.owner;
-    }
-
     setPermissions(newOrg){
         this.permissions.push(newOrg);
     }
